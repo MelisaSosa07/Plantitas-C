@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regar la Planta</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .plant-container {
+            position: relative;
+            width: 150px;
+            height: 200px;
+            margin: 50px auto;
+        }
+        .pot {
+            width: 150px;
+            position: absolute;
+            bottom: 0;
+            z-index: 2;
+        }
+        .plant {
+            width: 150px;
+            position: absolute;
+            bottom: 50px;
+            z-index: 1;
+        }
+        .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; 
+        height: 100vh; 
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">Elige tu maceta y planta</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="pot-select" class="form-label">Busca tu maceta:</label>
+                    <select id="pot-select" class="form-select">
+                        <option value="maceta1.png">Maceta 1</option>
+                        <option value="maceta2.png">Maceta 2</option>
+                        <option value="maceta3.png">Maceta 3</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="plant-select" class="form-label">Busca tu plantita:</label>
+                    <select id="plant-select" class="form-select">
+                        <option value="planta1.png">Planta 1</option>
+                        <option value="planta2.png">Planta 2</option>
+                        <option value="planta3.png">Planta 3</option>
+                    </select>
+                    <div class="button-container">
+                        <div class="plant-container">
+                            <img id="plant-image" class="plant" src="planta1.png" alt="Planta">
+                            <img id="pot-image" class="pot" src="maceta1.png" alt="Maceta">
+                        </div>
+                        <button id="water-button" class="btn btn-primary mt-3">Regar la Planta</button>
+                        <p id="message" class="mt-3 text-success"></p>
+                    </div>
+                 </div>
+                </div>
+
+    <script>
+        const potSelect = document.getElementById('pot-select');
+        const plantSelect = document.getElementById('plant-select');
+        const potImage = document.getElementById('pot-image');
+        const plantImage = document.getElementById('plant-image');
+        const waterButton = document.getElementById('water-button');
+        const message = document.getElementById('message');
+
+        potSelect.addEventListener('change', () => {
+            potImage.src = potSelect.value;
+        });
+
+        plantSelect.addEventListener('change', () => {
+            plantImage.src = plantSelect.value;
+        });
+
+        waterButton.addEventListener('click', () => {
+            message.textContent = '¡La planta ha sido regada! Mantenla viva! 🌱';
+            setTimeout(() => {
+                message.textContent = '';
+            }, 3000);
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
